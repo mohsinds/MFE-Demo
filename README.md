@@ -5,7 +5,7 @@ A small Micro-Frontend (MFE) demo with a host shell and three remotes: **watchli
 ## Full folder/file list
 
 ```
-mfe-mini-trading-desk/
+MFE-Demo/
 ├── README.md
 ├── container-host/
 │   ├── package.json
@@ -52,10 +52,10 @@ mfe-mini-trading-desk/
 **1. Install dependencies in all four apps**
 
 ```bash
-cd mfe-mini-trading-desk/container-host && npm install && cd ../..
-cd mfe-mini-trading-desk/remote-watchlist && npm install && cd ../..
-cd mfe-mini-trading-desk/remote-quote && npm install && cd ../..
-cd mfe-mini-trading-desk/remote-orders && npm install && cd ../..
+cd container-host && npm install && cd ../..
+cd remote-watchlist && npm install && cd ../..
+cd remote-quote && npm install && cd ../..
+cd remote-orders && npm install && cd ../..
 ```
 
 Or from repo root (one-liner):
@@ -68,16 +68,16 @@ cd mfe-mini-trading-desk && for d in container-host remote-watchlist remote-quot
 
 ```bash
 # Terminal 1 — remotes first (host will load them)
-cd mfe-mini-trading-desk/remote-watchlist && npm start
+cd remote-watchlist && npm start
 
 # Terminal 2
-cd mfe-mini-trading-desk/remote-quote && npm start
+cd remote-quote && npm start
 
 # Terminal 3
-cd mfe-mini-trading-desk/remote-orders && npm start
+cd remote-orders && npm start
 
 # Terminal 4 — host last
-cd mfe-mini-trading-desk/container-host && npm start
+cd container-host && npm start
 ```
 
 **Ports**
