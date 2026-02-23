@@ -2,6 +2,10 @@
 
 A small Micro-Frontend (MFE) demo with a host shell and three remotes: **watchlist**, **quote**, and **orders**.
 
+## Screenshot
+
+![Mini Trading Desk (Host)](screenshot.png)
+
 ## Full folder/file list
 
 ```
