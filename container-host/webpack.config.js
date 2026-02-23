@@ -38,9 +38,9 @@ module.exports = {
       name: "container_host",
       filename: "remoteEntry.js",
       remotes: {
-        watchlist: "watchlist@http://localhost:3001/remoteEntry.js",
-        quote: "quote@http://localhost:3002/remoteEntry.js",
-        orders: "orders@http://localhost:3003/remoteEntry.js",
+        watchlistApp: "watchlistApp@http://localhost:3001/remoteEntry.js",
+        quoteApp: "quoteApp@http://localhost:3002/remoteEntry.js",
+        ordersApp: "ordersApp@http://localhost:3003/remoteEntry.js",
       },
       shared: {
         react: { singleton: true, requiredVersion: "^18.2.0" },

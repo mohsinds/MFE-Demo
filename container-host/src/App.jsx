@@ -1,9 +1,9 @@
 import React, { useState, useCallback, Suspense, lazy } from "react";
 import { ErrorBoundary } from "./ErrorBoundary";
 
-const WatchlistRemote = lazy(() => import("watchlist/App"));
-const QuoteRemote = lazy(() => import("quote/App"));
-const OrdersRemote = lazy(() => import("orders/App"));
+const WatchlistRemote = lazy(() => import("watchlistApp/App"));
+const QuoteRemote = lazy(() => import("quoteApp/App"));
+const OrdersRemote = lazy(() => import("ordersApp/App"));
 
 function App() {
   const [activeSymbol, setActiveSymbol] = useState("AAPL");

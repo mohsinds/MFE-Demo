@@ -35,7 +35,7 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: "watchlist",
+      name: "watchlistApp",
       filename: "remoteEntry.js",
       exposes: {
         "./App": "./src/App.jsx",
