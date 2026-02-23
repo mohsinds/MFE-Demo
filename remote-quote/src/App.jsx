@@ -8,7 +8,12 @@ export default function App({ activeSymbol, publishEvent }) {
   const [price, setPrice] = useState(null);
   const [lastUpdated, setLastUpdated] = useState(null);
   const lastEmitRef = useRef(0);
+  const priceRef = useRef(null);
   const QUOTE_TICK_THROTTLE_MS = 2000;
+
+  useEffect(() => {
+    priceRef.current = price;
+  }, [price]);
 
   useEffect(() => {
     if (!activeSymbol) return;
@@ -17,16 +22,17 @@ export default function App({ activeSymbol, publishEvent }) {
     setLastUpdated(new Date());
 
     const id = setInterval(() => {
-      setPrice((p) => {
-        const next = Math.max(1, (p ?? base) + randomDelta());
-        const now = Date.now();
-        if (typeof publishEvent === "function" && now - lastEmitRef.current >= QUOTE_TICK_THROTTLE_MS) {
-          lastEmitRef.current = now;
-          publishEvent({ type: "QUOTE_TICK", payload: { symbol: activeSymbol, price: next } });
-        }
-        return next;
-      });
+      const prev = priceRef.current ?? base;
+      const next = Math.max(1, prev + randomDelta());
+      priceRef.current = next;
+      setPrice(next);
       setLastUpdated(new Date());
+
+      const now = Date.now();
+      if (typeof publishEvent === "function" && now - lastEmitRef.current >= QUOTE_TICK_THROTTLE_MS) {
+        lastEmitRef.current = now;
+        publishEvent({ type: "QUOTE_TICK", payload: { symbol: activeSymbol, price: next } });
+      }
     }, 500);
 
     return () => clearInterval(id);
